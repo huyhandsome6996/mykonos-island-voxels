@@ -33,20 +33,20 @@ function flatTileFloor(color, accents = null) {
     return voxels;
 }
 
-export function tileGrass() {
+export function coGiaCo() {
     return flatTileFloor(P.grass, (ix, iy) => {
         if ((ix + iy) % 3 === 0) return P.grassDark;
         if ((ix * 7 + iy * 13) % 5 === 0) return P.grassLight;
         return null;
     });
 }
-export function tileSand() {
+export function catBien() {
     return flatTileFloor(P.sand, (ix, iy) => {
         if ((ix * 5 + iy * 3) % 7 === 0) return P.sandDark;
         return null;
     });
 }
-export function tileStonePath() {
+export function duongLatDa() {
     return flatTileFloor(P.path, (ix, iy) => {
         // Brick-like alternating darker stones
         const brick = ((Math.floor(iy / 1) + (ix % 2 === 0 ? 0 : 1))) % 2;
@@ -55,13 +55,13 @@ export function tileStonePath() {
         return null;
     });
 }
-export function tileWhiteStone() {
+export function daTrang() {
     return flatTileFloor(P.white, (ix, iy) => {
         if ((ix + iy) % 4 === 0) return P.whiteShadow;
         return null;
     });
 }
-export function tileWater() {
+export function nuocBien() {
     // Water: flat, slightly below ground (z = 0 still but darker)
     const voxels = flatTileFloor(P.sea, (ix, iy) => {
         if ((ix * 13 + iy * 7) % 6 === 0) return P.seaShine;
@@ -72,7 +72,7 @@ export function tileWater() {
     voxels.forEach(v => { v.water = true; });
     return voxels;
 }
-export function tileSeaWall() {
+export function keKeBien() {
     // A canal-edge piece: low wall along one side + a strip of water on the
     // other side. Compact so it can sit on the grid.
     return compose(
@@ -88,7 +88,7 @@ export function tileSeaWall() {
         box(0, 1, 1, VPT, 1, 1, P.seaWall),
     );
 }
-export function tileStairs() {
+export function bacThang() {
     // Two steps going up to the right (east).
     return compose(
         box(0, 0, 0, VPT, VPT, 1, P.white),
@@ -99,7 +99,7 @@ export function tileStairs() {
 
 /* ───────────────────────── BORDERS / FENCES ─────────────────────── */
 
-export function lowWhiteWall() {
+export function tuongThap() {
     // Spans full back edge, 2 voxels tall.
     return compose(
         box(0, 0, 0, VPT, 1, 2, P.white),
@@ -107,7 +107,7 @@ export function lowWhiteWall() {
         box(0, 0, 2, VPT, 1, 1, P.whiteShadow),
     );
 }
-export function blueRailing() {
+export function lanCanXanh() {
     // Cobalt railing: posts + horizontal rails along front edge.
     const out = [];
     for (let ix = 0; ix < VPT; ix++) {
@@ -119,7 +119,7 @@ export function blueRailing() {
     for (let ix = 0; ix < VPT; ix++) out.push({ x: ix, y: VPT - 1, z: 2, c: P.cobaltLight });
     return out;
 }
-export function cornerWall() {
+export function tuongGoc() {
     // L-shape corner.
     return compose(
         box(0, 0, 0, VPT, 1, 3, P.white),
@@ -128,7 +128,7 @@ export function cornerWall() {
         box(0, 0, 3, 1, VPT, 1, P.whiteShadow),
     );
 }
-export function woodenGateFence() {
+export function hangRaoGo() {
     // Wooden post + slats spanning the cell.
     const out = [];
     out.push(...box(0, 1, 0, 1, 1, 4, P.woodDark));
@@ -144,7 +144,7 @@ export function woodenGateFence() {
     }
     return out;
 }
-export function lanternPost() {
+export function cotDen() {
     // Tall slender post + lit head.
     const cx = Math.floor(VPT / 2);
     const cy = Math.floor(VPT / 2);
@@ -158,7 +158,7 @@ export function lanternPost() {
 
 /* ───────────────────────── NATURE ──────────────────────────────── */
 
-export function cypressCluster() {
+export function cayBach() {
     // Two slim conical trees.
     const out = [];
     const trunkColor = P.woodDark;
@@ -183,7 +183,7 @@ export function cypressCluster() {
     return out;
 }
 
-export function bougainvilleaTree() {
+export function cayHoaGiay() {
     // Round canopy of pink + dark pink with a small pot/base.
     const out = [];
     // Pot
@@ -211,7 +211,7 @@ export function bougainvilleaTree() {
     return out;
 }
 
-export function oliveTree() {
+export function cayOlive() {
     const out = [];
     // Trunk
     out.push({ x: 1, y: 2, z: 0, c: P.woodDark });
@@ -235,7 +235,7 @@ export function oliveTree() {
     return out;
 }
 
-export function agavePlant() {
+export function cayThachLan() {
     const out = [];
     // Spiked rosette: blades reach outwards.
     const cx = 1, cy = 2;
@@ -253,7 +253,7 @@ export function agavePlant() {
     return out;
 }
 
-export function dryGrassTuft() {
+export function coKho() {
     // Sparse golden tuft.
     return [
         { x: 1, y: 2, z: 0, c: P.dryGrass },
@@ -264,7 +264,7 @@ export function dryGrassTuft() {
     ];
 }
 
-export function flowerPot() {
+export function chauHoa() {
     // Terracotta pot with bushy pink/white flowers.
     return compose(
         box(1, 1, 0, 2, 2, 1, P.terracotta),
@@ -282,7 +282,7 @@ export function flowerPot() {
 
 /* ───────────────────────── PROPS ───────────────────────────────── */
 
-export function stoneLantern() {
+export function denDa() {
     return compose(
         box(1, 1, 0, 2, 2, 1, P.stoneDark),
         box(1, 1, 1, 2, 2, 1, P.stone),
@@ -290,7 +290,7 @@ export function stoneLantern() {
         box(1, 1, 3, 2, 2, 1, P.stoneDark),
     );
 }
-export function hangingLantern() {
+export function denTreo() {
     return compose(
         box(1, 1, 0, 1, 1, 5, P.iron),
         box(2, 1, 5, 2, 1, 1, P.iron),
@@ -300,7 +300,7 @@ export function hangingLantern() {
     );
 }
 
-export function whiteArchway() {
+export function congVom() {
     // Two pillars + arched top with rounded inner.
     const out = [];
     out.push(...box(0, 1, 0, 1, 2, 4, P.white));
@@ -314,7 +314,7 @@ export function whiteArchway() {
     return out;
 }
 
-export function signpost() {
+export function bienChiDuong() {
     return compose(
         box(1, 2, 0, 1, 1, 3, P.woodDark),
         box(0, 2, 2, 3, 1, 1, P.wood),
@@ -322,7 +322,7 @@ export function signpost() {
     );
 }
 
-export function bannerFlag() {
+export function laCo() {
     return compose(
         box(1, 2, 0, 1, 1, 5, P.iron),
         box(2, 2, 4, 1, 1, 1, P.cobalt),
@@ -331,7 +331,7 @@ export function bannerFlag() {
     );
 }
 
-export function smallChapelAltar() {
+export function banThoNho() {
     // 2×2 cell altar/shrine: stepped white plinth with a cobalt dome and
     // a small cross on top — reads as a small chapel-style building.
     const W = VPT * 2;
@@ -351,7 +351,7 @@ export function smallChapelAltar() {
     );
 }
 
-export function smallBridge() {
+export function cayCauNho() {
     // 2-cell wide arched bridge.
     const out = [];
     for (let ix = 0; ix < VPT * 2; ix++) {
@@ -367,7 +367,7 @@ export function smallBridge() {
     return out;
 }
 
-export function well() {
+export function giengNuoc() {
     // Stone well with bucket on top.
     return compose(
         box(0, 0, 0, VPT, VPT, 1, P.stone),
@@ -386,7 +386,7 @@ export function well() {
     );
 }
 
-export function plantedGardenBed() {
+export function bonHoa() {
     // 1 cell raised garden with mixed plants.
     return compose(
         box(0, 0, 0, VPT, VPT, 1, P.wood),
@@ -402,7 +402,7 @@ export function plantedGardenBed() {
     );
 }
 
-export function cropPatch() {
+export function luongRau() {
     return compose(
         box(0, 0, 0, VPT, VPT, 1, P.soilDark),
         // rows of crops
@@ -418,7 +418,7 @@ export function cropPatch() {
     );
 }
 
-export function vegetableGarden() {
+export function vuonRau() {
     return compose(
         box(0, 0, 0, VPT, VPT, 1, P.wood),
         box(1, 1, 1, 2, 2, 1, P.soilDark),
@@ -435,7 +435,7 @@ export function vegetableGarden() {
     );
 }
 
-export function waterBucket() {
+export function xoNuoc() {
     return compose(
         box(1, 1, 0, 2, 2, 2, P.wood),
         box(1, 1, 2, 2, 2, 1, P.sea),
@@ -443,7 +443,7 @@ export function waterBucket() {
     );
 }
 
-export function potteryJar() {
+export function binhGom() {
     return compose(
         box(1, 1, 0, 2, 2, 1, P.terracotta),
         box(1, 1, 1, 2, 2, 1, P.terraLight),
@@ -452,7 +452,7 @@ export function potteryJar() {
     );
 }
 
-export function woodenCrate() {
+export function thungGo() {
     return compose(
         box(1, 1, 0, 2, 2, 2, P.wood),
         // X braces
@@ -465,7 +465,7 @@ export function woodenCrate() {
     );
 }
 
-export function blueBench() {
+export function gheBanh() {
     return compose(
         // legs
         box(0, 1, 0, 1, 2, 1, P.wood),
@@ -477,7 +477,7 @@ export function blueBench() {
     );
 }
 
-export function hayBale() {
+export function cuonRom() {
     return compose(
         box(0, 1, 0, VPT, 2, 2, P.dryGrass),
         // accents to read as straw
@@ -489,14 +489,14 @@ export function hayBale() {
     );
 }
 
-export function rockCluster() {
+export function cumDa() {
     return compose(
         box(0, 1, 0, 2, 2, 1, P.stone),
         box(2, 0, 0, 2, 2, 2, P.stoneDark),
         [{ x: 1, y: 2, z: 1, c: P.stoneLight }],
     );
 }
-export function largeRock() {
+export function tangDaLon() {
     return compose(
         box(0, 0, 0, VPT, VPT, 1, P.stone),
         box(1, 0, 1, 3, 3, 1, P.stoneDark),
@@ -504,7 +504,7 @@ export function largeRock() {
         [{ x: 1, y: 1, z: 3, c: P.stoneLight }],
     );
 }
-export function mossyStone() {
+export function daReu() {
     const v = compose(
         box(0, 1, 0, 3, 3, 1, P.stone),
         box(1, 1, 1, 2, 2, 1, P.stoneDark),
@@ -516,10 +516,10 @@ export function mossyStone() {
     );
     return v;
 }
-export function flatStone() {
+export function daPhang() {
     return box(0, 0, 0, VPT, VPT, 1, P.stoneLight);
 }
-export function pebbles() {
+export function soiNho() {
     return [
         { x: 0, y: 1, z: 0, c: P.stone },
         { x: 1, y: 2, z: 0, c: P.stoneDark },
@@ -528,21 +528,21 @@ export function pebbles() {
         { x: 1, y: 0, z: 0, c: P.stoneDark },
     ];
 }
-export function stonePile() {
+export function dongDa() {
     return compose(
         box(0, 1, 0, 3, 2, 1, P.stone),
         box(1, 1, 1, 2, 1, 1, P.stoneDark),
         [{ x: 1, y: 1, z: 2, c: P.stoneLight }],
     );
 }
-export function boulder() {
+export function tangDaTron() {
     return compose(
         box(0, 0, 0, 3, 3, 2, P.stone),
         box(1, 1, 2, 2, 2, 1, P.stoneDark),
         [{ x: 1, y: 1, z: 3, c: P.stone }],
     );
 }
-export function woodPile() {
+export function dongCui() {
     const out = [];
     for (let iz = 0; iz < 3; iz++) {
         const c = iz % 2 === 0 ? P.wood : P.woodLight;
@@ -553,14 +553,14 @@ export function woodPile() {
     }
     return out;
 }
-export function storageBox() {
+export function hopChuaDo() {
     return compose(
         box(0, 0, 0, VPT, VPT, 2, P.white),
         box(1, 1, 2, 2, 2, 1, P.cobalt),
         [{ x: 1, y: 0, z: 1, c: P.cobaltDeep }, { x: 2, y: 0, z: 1, c: P.cobaltDeep }],
     );
 }
-export function stoneBasin() {
+export function chauDa() {
     return compose(
         box(0, 0, 0, VPT, VPT, 1, P.stone),
         shell(1, 1, 1, 2, 2, 1, P.stone),
@@ -572,7 +572,7 @@ export function stoneBasin() {
         ],
     );
 }
-export function terracottaPot() {
+export function chauDatNung() {
     return compose(
         box(1, 1, 0, 2, 2, 1, P.terracotta),
         box(1, 1, 1, 2, 2, 1, P.terraDark),
@@ -596,7 +596,7 @@ function addDoor(voxels, x, y, z, color = P.cobalt) {
     voxels.push({ x, y, z: z + 1, c: color });
 }
 
-export function smallMykonosHouse() {
+export function nhaMykonosNho() {
     // 2×2 footprint = 8×8 voxels. Whitewashed cube with blue door, flat roof.
     const W = VPT * 2, D = VPT * 2;
     const out = [];
@@ -625,7 +625,7 @@ export function smallMykonosHouse() {
     return out;
 }
 
-export function twoStoryHouse() {
+export function nhaHaiTang() {
     // 3×3 footprint with stairs and balcony.
     const W = VPT * 3, D = VPT * 3;
     const out = [];
@@ -663,7 +663,7 @@ export function twoStoryHouse() {
     return out;
 }
 
-export function mainVilla() {
+export function bietThuChinh() {
     // 4×4 footprint, multi-tiered, roof terrace + pergola.
     const W = VPT * 4, D = VPT * 4;
     const out = [];
@@ -699,7 +699,7 @@ export function mainVilla() {
     return out;
 }
 
-export function windmillBuilding() {
+export function coiXayGio() {
     // 2×2 footprint, round tower.
     const cx = Math.floor(VPT * 2 / 2);
     const cy = Math.floor(VPT * 2 / 2);
@@ -730,7 +730,7 @@ export function windmillBuilding() {
     return out;
 }
 
-export function towerChapel() {
+export function nhaThoThap() {
     // 2×2 footprint with bell tower + small dome.
     const W = VPT * 2, D = VPT * 2;
     const out = [];
@@ -757,7 +757,7 @@ export function towerChapel() {
     return out;
 }
 
-export function mainChapel() {
+export function nhaThoChinh() {
     // 3×3 chapel with iconic blue dome.
     const W = VPT * 3, D = VPT * 3;
     const out = [];
@@ -789,7 +789,7 @@ export function mainChapel() {
     return out;
 }
 
-export function whiteCubeHouse() {
+export function nhaKhoiVuong() {
     // 2×2 minimalist cube house.
     const W = VPT * 2, D = VPT * 2;
     const out = [];
@@ -804,7 +804,7 @@ export function whiteCubeHouse() {
     return out;
 }
 
-export function terraceHouse() {
+export function nhaSanThuong() {
     // 3×2 with a terrace and stairs.
     const W = VPT * 3, D = VPT * 2;
     const out = [];
@@ -830,7 +830,7 @@ export function terraceHouse() {
     return out;
 }
 
-export function pergolaHouse() {
+export function nhaGianHoa() {
     // 3×3 with prominent pergola.
     const W = VPT * 3, D = VPT * 3;
     const out = [];
@@ -859,7 +859,7 @@ export function pergolaHouse() {
     return out;
 }
 
-export function vietnamFlagpole() {
+export function cotCoVietNam() {
     const out = [];
     const baseColor = P.white;
     const baseShadow = P.whiteShadow;

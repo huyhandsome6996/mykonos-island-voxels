@@ -43,84 +43,84 @@ const TO = O('terrain', 1);
 
 export const ASSET_MANIFEST = [
     // ── TERRAIN ───────────────────────────────────────────────────
-    { ...T('grass',    'Grass'),     tileLike: true, builder: A.tileGrass },
-    { ...T('path',     'Path'),      tileLike: true, builder: A.tileStonePath },
-    { ...T('sand',     'Sand'),      tileLike: true, builder: A.tileSand },
-    { ...T('stone',    'Stone'),     tileLike: true, builder: A.tileWhiteStone },
-    { ...T('water',    'Water'),     tileLike: true, builder: A.tileWater },
-    { ...TO('stairs',   'Stairs'),   noShadow: true, builder: A.tileStairs },
-    { ...TO('sea_wall', 'Sea Wall', { w: 1, d: 1 }, 0.70), fitCell: true, flatBase: true, noShadow: true, builder: A.tileSeaWall },
+    { ...T('grass',    'Grass'),     tileLike: true, builder: A.coGiaCo },
+    { ...T('path',     'Path'),      tileLike: true, builder: A.duongLatDa },
+    { ...T('sand',     'Sand'),      tileLike: true, builder: A.catBien },
+    { ...T('stone',    'Stone'),     tileLike: true, builder: A.daTrang },
+    { ...T('water',    'Water'),     tileLike: true, builder: A.nuocBien },
+    { ...TO('stairs',   'Stairs'),   noShadow: true, builder: A.bacThang },
+    { ...TO('sea_wall', 'Sea Wall', { w: 1, d: 1 }, 0.70), fitCell: true, flatBase: true, noShadow: true, builder: A.keKeBien },
 
     // ── NATURE ────────────────────────────────────────────────────
-    { ...N('cypress',       'Cypress',       { w: 1, d: 1 }, 0.65), builder: A.cypressCluster },
-    { ...N('bougainvillea', 'Bougainvillea', { w: 1, d: 1 }, 0.80), builder: A.bougainvilleaTree },
-    { ...N('olive',         'Olive Tree',    { w: 1, d: 1 }, 0.90), builder: A.oliveTree },
-    { ...N('agave',         'Agave',         { w: 1, d: 1 }, 0.60), builder: A.agavePlant },
-    { ...N('dry_grass',     'Dry Grass',     { w: 1, d: 1 }, 0.55), builder: A.dryGrassTuft },
-    { ...N('flower_pot',    'Flower Pot',    { w: 1, d: 1 }, 0.35), builder: A.flowerPot },
+    { ...N('cypress',       'Cypress',       { w: 1, d: 1 }, 0.65), builder: A.cayBach },
+    { ...N('bougainvillea', 'Bougainvillea', { w: 1, d: 1 }, 0.80), builder: A.cayHoaGiay },
+    { ...N('olive',         'Olive Tree',    { w: 1, d: 1 }, 0.90), builder: A.cayOlive },
+    { ...N('agave',         'Agave',         { w: 1, d: 1 }, 0.60), builder: A.cayThachLan },
+    { ...N('dry_grass',     'Dry Grass',     { w: 1, d: 1 }, 0.55), builder: A.coKho },
+    { ...N('flower_pot',    'Flower Pot',    { w: 1, d: 1 }, 0.35), builder: A.chauHoa },
 
     // ── PROPS ─────────────────────────────────────────────────────
     // Walls, railings, gates, archways — span the full cell because they
     // are architectural pieces meant to align with adjacent tiles.
-    { ...P('low_wall',        'Low Wall',        { w: 1, d: 1 }, 1.00), builder: A.lowWhiteWall },
-    { ...P('blue_railing',    'Blue Railing',    { w: 1, d: 1 }, 0.65), flatBase: true, shadowStyle: 'contact', builder: A.blueRailing },
-    { ...P('corner_wall',     'Corner Wall',     { w: 1, d: 1 }, 1.00), builder: A.cornerWall },
-    { ...P('gate_fence',      'Gate Fence',      { w: 1, d: 1 }, 0.70), flatBase: true, shadowStyle: 'contact', builder: A.woodenGateFence },
-    { ...P('archway',         'Archway',         { w: 1, d: 1 }, 0.90), builder: A.whiteArchway },
+    { ...P('low_wall',        'Low Wall',        { w: 1, d: 1 }, 1.00), builder: A.tuongThap },
+    { ...P('blue_railing',    'Blue Railing',    { w: 1, d: 1 }, 0.65), flatBase: true, shadowStyle: 'contact', builder: A.lanCanXanh },
+    { ...P('corner_wall',     'Corner Wall',     { w: 1, d: 1 }, 1.00), builder: A.tuongGoc },
+    { ...P('gate_fence',      'Gate Fence',      { w: 1, d: 1 }, 0.70), flatBase: true, shadowStyle: 'contact', builder: A.hangRaoGo },
+    { ...P('archway',         'Archway',         { w: 1, d: 1 }, 0.90), builder: A.congVom },
 
     // Lanterns and posts — narrow vertical features, ~half cell footprint.
-    { ...P('lantern_post',    'Lantern Post',    { w: 1, d: 1 }, 0.45), builder: A.lanternPost },
-    { ...P('stone_lantern',   'Stone Lantern',   { w: 1, d: 1 }, 0.40), builder: A.stoneLantern },
-    { ...P('hanging_lantern', 'Hanging Lantern', { w: 1, d: 1 }, 0.40), builder: A.hangingLantern },
+    { ...P('lantern_post',    'Lantern Post',    { w: 1, d: 1 }, 0.45), builder: A.cotDen },
+    { ...P('stone_lantern',   'Stone Lantern',   { w: 1, d: 1 }, 0.40), builder: A.denDa },
+    { ...P('hanging_lantern', 'Hanging Lantern', { w: 1, d: 1 }, 0.40), builder: A.denTreo },
 
     // Furniture / structures the player interacts with — chunky but not
     // cell-sized.
-    { ...P('bench',           'Bench',           { w: 1, d: 1 }, 0.50), builder: A.blueBench },
-    { ...P('signpost',        'Signpost',        { w: 1, d: 1 }, 0.40), builder: A.signpost },
-    { ...P('banner',          'Banner',          { w: 1, d: 1 }, 0.45), builder: A.bannerFlag },
-    { ...P('vn_flagpole',     'VN Flagpole',     { w: 1, d: 1 }, 0.70), builder: A.vietnamFlagpole },
+    { ...P('bench',           'Bench',           { w: 1, d: 1 }, 0.50), builder: A.gheBanh },
+    { ...P('signpost',        'Signpost',        { w: 1, d: 1 }, 0.40), builder: A.bienChiDuong },
+    { ...P('banner',          'Banner',          { w: 1, d: 1 }, 0.45), builder: A.laCo },
+    { ...P('vn_flagpole',     'Vietnam Flagpole',     { w: 1, d: 1 }, 0.70), builder: A.cotCoVietNam },
 
 
     // Carry-able decorations — small.
-    { ...P('crate',           'Crate',           { w: 1, d: 1 }, 0.50), builder: A.woodenCrate },
-    { ...P('hay_bale',        'Hay Bale',        { w: 1, d: 1 }, 0.55), builder: A.hayBale },
-    { ...P('storage_box',     'Storage Box',     { w: 1, d: 1 }, 0.55), builder: A.storageBox },
-    { ...P('wood_pile',       'Wood Pile',       { w: 1, d: 1 }, 0.55), builder: A.woodPile },
-    { ...P('water_bucket',    'Water Bucket',    { w: 1, d: 1 }, 0.35), builder: A.waterBucket },
-    { ...P('pottery_jar',     'Pottery Jar',     { w: 1, d: 1 }, 0.35), builder: A.potteryJar },
-    { ...P('terracotta_pot',  'Plant Pot',       { w: 1, d: 1 }, 0.30), builder: A.terracottaPot },
-    { ...P('stone_basin',     'Stone Basin',     { w: 1, d: 1 }, 0.50), builder: A.stoneBasin },
+    { ...P('crate',           'Crate',           { w: 1, d: 1 }, 0.50), builder: A.thungGo },
+    { ...P('hay_bale',        'Hay Bale',        { w: 1, d: 1 }, 0.55), builder: A.cuonRom },
+    { ...P('storage_box',     'Storage Box',     { w: 1, d: 1 }, 0.55), builder: A.hopChuaDo },
+    { ...P('wood_pile',       'Wood Pile',       { w: 1, d: 1 }, 0.55), builder: A.dongCui },
+    { ...P('water_bucket',    'Water Bucket',    { w: 1, d: 1 }, 0.35), builder: A.xoNuoc },
+    { ...P('pottery_jar',     'Pottery Jar',     { w: 1, d: 1 }, 0.35), builder: A.binhGom },
+    { ...P('terracotta_pot',  'Plant Pot',       { w: 1, d: 1 }, 0.30), builder: A.chauDatNung },
+    { ...P('stone_basin',     'Stone Basin',     { w: 1, d: 1 }, 0.50), builder: A.chauDa },
 
     // Rock clutter — small, scattered.
-    { ...P('rocks',           'Rocks',           { w: 1, d: 1 }, 0.55), builder: A.rockCluster },
-    { ...P('large_rock',      'Large Rock',      { w: 1, d: 1 }, 0.65), builder: A.largeRock },
-    { ...P('mossy_stone',     'Mossy Stone',     { w: 1, d: 1 }, 0.45), builder: A.mossyStone },
-    { ...P('flat_stone',      'Flat Stone',      { w: 1, d: 1 }, 0.45), builder: A.flatStone },
-    { ...P('pebbles',         'Pebbles',         { w: 1, d: 1 }, 0.45), builder: A.pebbles },
-    { ...P('stone_pile',      'Stone Pile',      { w: 1, d: 1 }, 0.55), builder: A.stonePile },
-    { ...P('boulder',         'Boulder',         { w: 1, d: 1 }, 0.75), builder: A.boulder },
+    { ...P('rocks',           'Rocks',           { w: 1, d: 1 }, 0.55), builder: A.cumDa },
+    { ...P('large_rock',      'Large Rock',      { w: 1, d: 1 }, 0.65), builder: A.tangDaLon },
+    { ...P('mossy_stone',     'Mossy Stone',     { w: 1, d: 1 }, 0.45), builder: A.daReu },
+    { ...P('flat_stone',      'Flat Stone',      { w: 1, d: 1 }, 0.45), builder: A.daPhang },
+    { ...P('pebbles',         'Pebbles',         { w: 1, d: 1 }, 0.45), builder: A.soiNho },
+    { ...P('stone_pile',      'Stone Pile',      { w: 1, d: 1 }, 0.55), builder: A.dongDa },
+    { ...P('boulder',         'Boulder',         { w: 1, d: 1 }, 0.75), builder: A.tangDaTron },
 
     // ── WATER FEATURES ────────────────────────────────────────────
-    { ...W('small_bridge', 'Bridge',     { w: 2, d: 1 }, 0.95), builder: A.smallBridge },
-    { ...W('well',         'Well',       { w: 1, d: 1 }, 0.55), builder: A.well },
+    { ...W('small_bridge', 'Bridge',     { w: 2, d: 1 }, 0.95), builder: A.cayCauNho },
+    { ...W('well',         'Well',       { w: 1, d: 1 }, 0.55), builder: A.giengNuoc },
     // Garden beds and crop patches already include their own box/slab depth
     // in the PNG. Keep them intact and anchor their painted bottom edge to
     // the cell front corner so they sit on, not above, the highlighted cell.
-    { ...W('garden_bed',   'Garden Bed', { w: 1, d: 1 }, 0.95), filename: 'newAsset/Garden Bed.png', fitCell: true, flatBase: true, noShadow: true, builder: A.plantedGardenBed },
-    { ...W('crop_patch',   'Crop Patch', { w: 1, d: 1 }, 0.95), filename: 'newAsset/Crop Patch.png', fitCell: true, flatBase: true, noShadow: true, builder: A.cropPatch },
-    { ...W('veg_garden',   'Veg Garden', { w: 1, d: 1 }, 0.95), filename: 'newAsset/Veg Garden.png', fitCell: true, flatBase: true, noShadow: true, builder: A.vegetableGarden },
+    { ...W('garden_bed',   'Garden Bed', { w: 1, d: 1 }, 0.95), filename: 'newAsset/Garden Bed.png', fitCell: true, flatBase: true, noShadow: true, builder: A.bonHoa },
+    { ...W('crop_patch',   'Crop Patch', { w: 1, d: 1 }, 0.95), filename: 'newAsset/Crop Patch.png', fitCell: true, flatBase: true, noShadow: true, builder: A.luongRau },
+    { ...W('veg_garden',   'Veg Garden', { w: 1, d: 1 }, 0.95), filename: 'newAsset/Veg Garden.png', fitCell: true, flatBase: true, noShadow: true, builder: A.vuonRau },
 
     // ── BUILDINGS ─────────────────────────────────────────────────
-    { ...B('house',         'House',         { w: 2, d: 2 }), builder: A.smallMykonosHouse },
-    { ...B('two_story',     'Two-Story',     { w: 3, d: 3 }), builder: A.twoStoryHouse },
-    { ...B('cube_house',    'Cube House',    { w: 2, d: 2 }), builder: A.whiteCubeHouse },
-    { ...B('terrace_house', 'Terrace House', { w: 3, d: 2 }), builder: A.terraceHouse },
-    { ...B('pergola_house', 'Pergola House', { w: 3, d: 3 }), builder: A.pergolaHouse },
-    { ...B('villa',         'Main Villa',    { w: 4, d: 4 }), builder: A.mainVilla },
-    { ...B('altar',         'Altar',         { w: 2, d: 2 }), builder: A.smallChapelAltar },
-    { ...B('tower_chapel',  'Tower Chapel',  { w: 2, d: 2 }), builder: A.towerChapel },
-    { ...B('main_chapel',   'Main Chapel',   { w: 3, d: 3 }), builder: A.mainChapel },
-    { ...B('windmill',      'Windmill',      { w: 2, d: 2 }), builder: A.windmillBuilding },
+    { ...B('house',         'House',         { w: 2, d: 2 }), builder: A.nhaMykonosNho },
+    { ...B('two_story',     'Two-Story',     { w: 3, d: 3 }), builder: A.nhaHaiTang },
+    { ...B('cube_house',    'Cube House',    { w: 2, d: 2 }), builder: A.nhaKhoiVuong },
+    { ...B('terrace_house', 'Terrace House', { w: 3, d: 2 }), builder: A.nhaSanThuong },
+    { ...B('pergola_house', 'Pergola House', { w: 3, d: 3 }), builder: A.nhaGianHoa },
+    { ...B('villa',         'Main Villa',    { w: 4, d: 4 }), builder: A.bietThuChinh },
+    { ...B('altar',         'Altar',         { w: 2, d: 2 }), builder: A.banThoNho },
+    { ...B('tower_chapel',  'Tower Chapel',  { w: 2, d: 2 }), builder: A.nhaThoThap },
+    { ...B('main_chapel',   'Main Chapel',   { w: 3, d: 3 }), builder: A.nhaThoChinh },
+    { ...B('windmill',      'Windmill',      { w: 2, d: 2 }), builder: A.coiXayGio },
 ];
 
 export const ASSET_INDEX = Object.freeze(
