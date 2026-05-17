@@ -18,13 +18,13 @@ const TOOL_ICONS = {
 };
 
 const TOOL_BUTTONS = [
-    { id: 'place',  label: 'Place'  },
-    { id: 'fill',   label: 'Fill'   },
-    { id: 'erase',  label: 'Erase'  },
-    { id: 'pan',    label: 'Pan'    },
-    { id: 'grid',   label: 'Grid'   },
-    { id: 'save',   label: 'Save'   },
-    { id: 'reset',  label: 'Reset'  },
+    { id: 'place',  label: 'Đặt'      },
+    { id: 'fill',   label: 'Tô cỏ'    },
+    { id: 'erase',  label: 'Xóa'      },
+    { id: 'pan',    label: 'Di chuyển' },
+    { id: 'grid',   label: 'Lưới'     },
+    { id: 'save',   label: 'Lưu'      },
+    { id: 'reset',  label: 'Đặt lại'   },
 ];
 
 export class Toolbar {

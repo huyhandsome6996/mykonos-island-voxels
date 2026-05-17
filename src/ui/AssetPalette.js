@@ -21,12 +21,19 @@ export class AssetPalette {
     }
 
     _buildTabs() {
+        const CATEGORY_NAMES_VN = {
+            terrain: 'Địa hình',
+            nature: 'Thiên nhiên',
+            props: 'Vật dụng',
+            water: 'Nguồn nước',
+            buildings: 'Nhà cửa'
+        };
         this.tabsEl.innerHTML = '';
         for (const c of CATEGORIES) {
             const btn = document.createElement('button');
             btn.type = 'button';
             btn.className = 'tab';
-            btn.textContent = c[0].toUpperCase() + c.slice(1);
+            btn.textContent = CATEGORY_NAMES_VN[c] || c;
             btn.addEventListener('click', () => {
                 playUiClick();
                 this.game.setCategory(c);

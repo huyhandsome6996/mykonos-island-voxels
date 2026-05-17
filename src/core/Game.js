@@ -96,7 +96,7 @@ export class Game {
         this.flipH = !this.flipH;
         this._syncPreviewFlip();
         this.renderer.markDirty();
-        this.ui?.showToast(`Flip horizontal: ${this.flipH ? 'on' : 'off'}`);
+        this.ui?.showToast(`Xoay ngang: ${this.flipH ? 'Bật' : 'Tắt'}`);
         this.ui?.update();
     }
 
@@ -104,7 +104,7 @@ export class Game {
         this.flipV = !this.flipV;
         this._syncPreviewFlip();
         this.renderer.markDirty();
-        this.ui?.showToast(`Flip vertical: ${this.flipV ? 'on' : 'off'}`);
+        this.ui?.showToast(`Xoay dọc: ${this.flipV ? 'Bật' : 'Tắt'}`);
         this.ui?.update();
     }
 
@@ -128,7 +128,7 @@ export class Game {
 
     save() {
         const ok = SaveSystem.save(this.tileMap, this.camera);
-        this.ui?.showToast(ok ? 'Saved your island' : 'Save failed');
+        this.ui?.showToast(ok ? 'Đã lưu hòn đảo của bạn!' : 'Lưu thất bại!');
     }
 
     load() {
@@ -142,7 +142,7 @@ export class Game {
         SaveSystem.clear();
         this._centerCamera();
         this.renderer.markDirty();
-        this.ui?.showToast('World reset');
+        this.ui?.showToast('Đã đặt lại thế giới!');
     }
 
     /**
@@ -173,9 +173,9 @@ export class Game {
             // One sound at the start; the per-tile placement audio path
             // would fire ~196 times in a fraction of a second otherwise.
             playPlacementFor('grass');
-            this.ui?.showToast(`Filled ${filled} ${filled === 1 ? 'tile' : 'tiles'} with grass`);
+            this.ui?.showToast(`Đã phủ xanh ${filled} ô cỏ!`);
         } else {
-            this.ui?.showToast('Grid already covered');
+            this.ui?.showToast('Bản đồ đã được phủ cỏ kín!');
         }
         return filled;
     }

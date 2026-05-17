@@ -18,7 +18,7 @@ async function main() {
 
     await loadAssets((p, label) => {
         fill.style.width = `${Math.round(p * 100)}%`;
-        status.textContent = `crafting ${label}…`;
+        status.textContent = `đang dựng ${label}…`;
     });
 
     // Kick off the UI sound effect download in parallel — it's tiny and
@@ -26,7 +26,7 @@ async function main() {
     loadUiAudio();
 
     fill.style.width = '100%';
-    status.textContent = 'arriving at the harbor';
+    status.textContent = 'đang cập bến cảng…';
 
     // Tiny delay for the bar to finish its sweep — feels nicer.
     await new Promise(r => setTimeout(r, 250));
@@ -39,7 +39,7 @@ async function main() {
 
     // Try to restore previous session.
     if (game.load()) {
-        ui.showToast('Welcome back');
+        ui.showToast('Chào mừng bạn quay trở lại!');
     } else {
         seedExampleVillage(game);
     }
