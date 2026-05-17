@@ -78,6 +78,8 @@ export const ASSET_MANIFEST = [
     { ...P('bench',           'Bench',           { w: 1, d: 1 }, 0.50), builder: A.blueBench },
     { ...P('signpost',        'Signpost',        { w: 1, d: 1 }, 0.40), builder: A.signpost },
     { ...P('banner',          'Banner',          { w: 1, d: 1 }, 0.45), builder: A.bannerFlag },
+    { ...P('vn_flagpole',     'VN Flagpole',     { w: 1, d: 1 }, 0.70), builder: A.vietnamFlagpole },
+
 
     // Carry-able decorations — small.
     { ...P('crate',           'Crate',           { w: 1, d: 1 }, 0.50), builder: A.woodenCrate },

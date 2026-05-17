@@ -158,7 +158,7 @@ const WOOD_ASSET_IDS = new Set([
     // Fences / railings / gates
     'blue_railing', 'gate_fence',
     // Wooden furniture / signage
-    'bench', 'signpost', 'banner',
+    'bench', 'signpost', 'banner', 'vn_flagpole',
     // Lantern posts (wooden mast)
     'lantern_post', 'hanging_lantern',
     // Wooden carryables

@@ -858,3 +858,44 @@ export function pergolaHouse() {
     }
     return out;
 }
+
+export function vietnamFlagpole() {
+    const out = [];
+    const baseColor = P.white;
+    const baseShadow = P.whiteShadow;
+    const poleColor = P.ironLight;
+    const flagRed = '#da251d';
+    const flagYellow = '#ffde00';
+
+    // Layer 0: Stepped base (3x3)
+    out.push(...box(0, 0, 0, 3, 3, 1, baseShadow));
+    // Layer 1: Upper base (1x1) - perfectly centered
+    out.push(...box(1, 1, 1, 1, 1, 1, baseColor));
+
+    // Pole at (1, 1), rising from z = 2 to z = 12 (height 11 voxels)
+    out.push(...box(1, 1, 2, 1, 1, 11, poleColor));
+
+    // Flat, symmetrical Vietnamese Flag (Red background, Yellow 5-pointed Star)
+    // Extended along the x-axis at y = 1 (constant) to avoid diagonal overlap.
+    // Flag spans x from 2 to 4, z from 9 to 11 (height 3, width 3).
+    // The star is perfectly centered at x = 3, z = 10.
+
+    // Column x = 2:
+    out.push({ x: 2, y: 1, z: 11, c: flagRed });
+    out.push({ x: 2, y: 1, z: 10, c: flagYellow }); // Left arm
+    out.push({ x: 2, y: 1, z: 9, c: flagYellow });  // Bottom-left leg
+
+    // Column x = 3 (Center):
+    out.push({ x: 3, y: 1, z: 11, c: flagYellow }); // Top point
+    out.push({ x: 3, y: 1, z: 10, c: flagYellow }); // Star center
+    out.push({ x: 3, y: 1, z: 9, c: flagRed });     // Separator between legs
+
+    // Column x = 4:
+    out.push({ x: 4, y: 1, z: 11, c: flagRed });
+    out.push({ x: 4, y: 1, z: 10, c: flagYellow }); // Right arm
+    out.push({ x: 4, y: 1, z: 9, c: flagYellow });  // Bottom-right leg
+
+    return out;
+}
+
+
